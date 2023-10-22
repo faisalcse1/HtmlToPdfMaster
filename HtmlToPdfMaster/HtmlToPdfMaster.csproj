@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>		
+		<TargetFrameworks>net4.7.2;net4.8;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>		
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>HtmlToPdfMaster</Title>
 		<PackageProjectUrl>https://github.com/faisalcse1/HtmlToPdfMaster</PackageProjectUrl>
