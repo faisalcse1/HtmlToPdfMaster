@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>		
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>HtmlToPdfMaster</Title>
+		<PackageProjectUrl>https://github.com/faisalcse1/HtmlToPdfMaster</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/faisalcse1/HtmlToPdfMaster</RepositoryUrl>
+		<Authors>MD FAISAL</Authors>
+		<Company>Programming Palli</Company>
+		<Copyright>2023 Programming Palli</Copyright>
+		<PackageTags>pdf; converter; html2pdf; htmltopdf; html; library; html-to-pdf; pdf-converter; html-to-pdf-converter; sdk; html-to-pdf-net; pdf-library; pdf-sdk; html-to-pdf-converter-net; free-html-to-pdf; free-pdf-library; free-html-to-pdf-converter; free-html-to-pdf-net; html-to-pdf-c#;htmltopdf;htmltopdfconverter; corehtmltopdf;wkhtmltopdf</PackageTags>
+		<Description>HTML to PDF Converter for .NET Core - Community Edition is a free, streamlined version of the HtmlToPdfMaster Library for .NET Core, offering robust HTML to PDF conversion capabilities to the community.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<AssemblyName>HtmlToPdfMaster</AssemblyName>
+		<RootNamespace>HtmlToPdfMaster</RootNamespace>
+		<Version>1.0.0.1</Version>
+		<PackageId>HtmlToPdfMaster</PackageId>
+	</PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="wkhtmltopdf.exe">
+			<IncludeInPackage>true</IncludeInPackage>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>
