@@ -77,11 +77,11 @@ namespace HtmlToPdfMaster
         /// <param name="height">Height in mm</param>
         /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <returns></returns>
-        public static byte[] FromHtmlString(string html, int width, int height,int quality=100, int margin_left=0, int margin_top=0, int margin_right = 0 , int margin_bottom = 0, string encoding="UTF-8")
+        public static byte[] FromHtmlString(string html, int width, int height,int quality=100,int dpi=100, int margin_left=0, int margin_top=0, int margin_right = 0 , int margin_bottom = 0, string encoding="UTF-8")
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid()}.html");
             File.WriteAllText(filename, html);
-            var bytes = FromUrl(filename, width, height,quality, margin_left, margin_top, margin_right, margin_bottom, encoding);
+            var bytes = FromUrl(filename, width, height,quality,dpi, margin_left, margin_top, margin_right, margin_bottom, encoding);
             File.Delete(filename);
             return bytes;
         }
@@ -94,7 +94,7 @@ namespace HtmlToPdfMaster
         /// <param name="height">Height in mm</param>
         /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <returns></returns>
-        public static byte[] FromUrl(string url, int width, int height,int quality=100, int margin_left = 0, int margin_top = 0, int margin_right = 0, int margin_bottom = 0, string encoding="UTF-8")
+        public static byte[] FromUrl(string url, int width, int height,int quality=100,int dpi=100, int margin_left = 0, int margin_top = 0, int margin_right = 0, int margin_bottom = 0, string encoding="UTF-8")
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid().ToString()}.pdf");
 
@@ -102,11 +102,11 @@ namespace HtmlToPdfMaster
 
             if (IsLocalPath(url))
             {
-                args = $" --encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} \"{url}\" \"{filename}\"";
+                args = $" --encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} {url} \"{filename}\"";
+                args = $"--encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)
