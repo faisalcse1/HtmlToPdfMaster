@@ -102,11 +102,11 @@ namespace HtmlToPdfMaster
 
             if (IsLocalPath(url))
             {
-                args = $" --encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} \"{url}\" \"{filename}\"";
+                args = $" --encoding {encoding} --page-height {height} --page-width {width} --lowquality --image-quality {quality} --image-dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--encoding {encoding} --page-height {height} --page-width {width} --image-quality {quality} --dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} {url} \"{filename}\"";
+                args = $"--encoding {encoding} --page-height {height} --page-width {width} --lowquality --image-quality {quality} --image-dpi {dpi} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)
