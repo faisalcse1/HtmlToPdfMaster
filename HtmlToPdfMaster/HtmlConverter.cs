@@ -16,10 +16,11 @@ namespace HtmlToPdfMaster
 
         static HtmlConverter()
         {
-            directory = AppContext.BaseDirectory;
+            //directory = AppContext.BaseDirectory;
+            directory = AppDomain.CurrentDomain.BaseDirectory;
 
             //Check on what platform we are
-            if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
                 toolFilepath = Path.Combine(directory, toolFilename + ".exe");
 
@@ -36,7 +37,7 @@ namespace HtmlToPdfMaster
                     }
                 }
             }
-            else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+            else if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
                 //Check if wkhtmltoimage package is installed on this distro in using which command
                 Process process = Process.Start(new ProcessStartInfo()
@@ -77,11 +78,11 @@ namespace HtmlToPdfMaster
         /// <param name="height">Height in mm</param>
         /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <returns></returns>
-        public static byte[] FromHtmlString(string html, int width, int height,int quality=100,int dpi=100, int margin_left=0, int margin_top=0, int margin_right = 0 , int margin_bottom = 0, string encoding="UTF-8")
+        public static byte[] FromHtmlString(string html, int width, int height, int quality = 100, int dpi = 100, int margin_left = 0, int margin_top = 0, int margin_right = 0, int margin_bottom = 0, string encoding = "UTF-8")
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid()}.html");
             File.WriteAllText(filename, html);
-            var bytes = FromUrl(filename, width, height,quality,dpi, margin_left, margin_top, margin_right, margin_bottom, encoding);
+            var bytes = FromUrl(filename, width, height, quality, dpi, margin_left, margin_top, margin_right, margin_bottom, encoding);
             File.Delete(filename);
             return bytes;
         }
@@ -94,7 +95,7 @@ namespace HtmlToPdfMaster
         /// <param name="height">Height in mm</param>
         /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <returns></returns>
-        public static byte[] FromUrl(string url, int width, int height,int quality=100,int dpi=100, int margin_left = 0, int margin_top = 0, int margin_right = 0, int margin_bottom = 0, string encoding="UTF-8")
+        public static byte[] FromUrl(string url, int width, int height, int quality = 100, int dpi = 100, int margin_left = 0, int margin_top = 0, int margin_right = 0, int margin_bottom = 0, string encoding = "UTF-8")
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid().ToString()}.pdf");
 
