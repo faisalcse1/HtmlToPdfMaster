@@ -14,7 +14,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<AssemblyName>HtmlToPdfMaster</AssemblyName>
 		<RootNamespace>HtmlToPdfMaster</RootNamespace>
-		<Version>1.0.0.3</Version>
+		<Version>1.0.0.4</Version>
 		<PackageId>HtmlToPdfMaster</PackageId>
 	</PropertyGroup>
 	<ItemGroup>
